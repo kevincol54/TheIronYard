@@ -1,0 +1,11 @@
+<h1> This Years Top surfers!</h1>
+
+<ol>
+  <% @surfers.each do |surfers| %>
+    <li>
+      <%= surfers[:first_name] %> <%= surfers[:last_name] %>
+    </li>
+  <%end%>
+</ol>
+
+<%= @para %>

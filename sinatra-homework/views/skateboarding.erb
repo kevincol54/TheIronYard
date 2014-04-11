@@ -1,0 +1,11 @@
+<h1>This Years Top skateboarders!</h1>
+<ol>
+<% @skaters.each do |skaters| %>
+<li>
+ <%= skaters[:first_name] %> 
+ <%= skaters[:last_name] %>
+ <br>
+</li>
+  <%end%>
+</ol>
+<%= @para %>

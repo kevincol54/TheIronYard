@@ -1,0 +1,12 @@
+<h1>This Years Top snowboarders!</h1>
+<ol>
+<% @snowboarders.each do |snowboarders| %>
+<li>
+ <%= snowboarders[:first_name] %> 
+ <%= snowboarders[:last_name] %>
+ <br>
+</li>
+  <%end%>
+</ol>
+
+<%= @para %>
