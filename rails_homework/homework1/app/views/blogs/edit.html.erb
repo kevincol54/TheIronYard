@@ -2,10 +2,12 @@
 
 <%= form_for @blog do |b| %>
   <%= b.label :blog_name %>
+  <br>
   <%= b.text_field :blog_name %>
   <br>
   <%= b.label :blog_content %>
-  <%= b.text_field :blog_content %>
+  <br>
+  <%= b.text_area :blog_content, :cols => "150", :rows => "50" %>
   <br>
   <%= b.submit "Post Blog" %>
   <% end %>
