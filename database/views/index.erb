@@ -1,0 +1,94 @@
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/CSS/styles.css">
+
+
+<html>
+<title> Dis Is My Blog</title>
+  <header class="navbar navbar-default navbar-fixed-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="http://localhost:4567/" class="navbar-brand">Home</a>
+       <a href="http://localhost:4567/addpage" class="navbar-brand">Add Blog Post</a>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li>
+         
+        </li>
+      </ul>
+      <ul class="nav navbar-right navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
+          <ul class="dropdown-menu" style="padding:12px;">
+            <form class="form-inline">
+              <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
+            </form>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div id="masthead">  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h1>K-Dog's Blog
+          <p class="lead">The WEIRDESTTT place on earth</p>
+        </h1>
+      </div>
+      <div class="col-md-5">
+          <div class="row">
+            <div class="col-sm-12">     
+            </div>
+          </div>
+      </div>
+    </div> 
+  </div> 
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12"> 
+      <div class="panel">
+        <div class="panel-body">   
+            <div class="row"> 
+              <%= yield %>    
+            </div>
+          </div> 
+        </div>
+      </div>                                                                
+    </div>
+  </div>
+</div>
+                                                
+                                                                              
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <ul class="list-inline">
+          <li><i class="icon-facebook icon-2x"></i></li>
+          <li><i class="icon-twitter icon-2x"></i></li>
+          <li><i class="icon-google-plus icon-2x"></i></li>
+          <li><i class="icon-pinterest icon-2x"></i></li>
+        </ul>
+        
+      </div>
+      <div class="col-sm-6">
+          <p class="pull-right">Built with <i class="icon-heart-empty"></i>  <a href="http://www.bootply.com">My Brain</a></p>      
+      </div>
+    </div>
+  </div>
+</footer>
+
+</html>

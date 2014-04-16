@@ -1,0 +1,6 @@
+<h1>Blog Posts!</h1>
+
+<% @blog.each do |post| %>
+  <%= erb :post, { locals: {post: post }} %>  
+<% end %>
+
