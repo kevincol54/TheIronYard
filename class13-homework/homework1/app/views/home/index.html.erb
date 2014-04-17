@@ -1,0 +1,27 @@
+<h1>this is my index</h1>
+
+<%= link_to "Add DVD", new_dvd_path %>
+<hr>
+<br>
+<% @dvd.each do |dvds| %>
+<%= dvds.name %>
+<br>
+<%= dvds.rating %>
+<br>
+<%= dvds.director %>
+<br>
+<%= dvds.release_date %>
+<br>
+<%= dvds.genre %>
+<br>
+<%= dvds.length %>
+<br>
+<%= dvds.description %>
+<br>
+<%= dvds.good_movie %>
+<br>
+<%= link_to "Edit", edit_dvd_path(dvds) %>
+<br>
+<%= link_to "Delete", dvd_path(dvds), method: :delete %>
+<hr>
+<% end %>

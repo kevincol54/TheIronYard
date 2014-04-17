@@ -1,0 +1,33 @@
+<%= form_for @dvd do |f| %>
+<%= render 'layouts/error_message', object: @dvd %>
+<%= f.label :name, "Title" %>
+<%= f.text_field :name %>
+<br>
+<%= f.label :rating, "Rating" %>
+<%= f.text_field :rating %>
+<br>
+<%= f.label :director, "Director" %>
+<%= f.text_field :director %>
+<br>
+<%= f.label :release_date, "Release Date" %>
+<%= f.text_field :release_date %>
+<br>
+<%= f.label :genre, "Genre" %>
+<%= f.text_field :genre %>
+<br>
+<%= f.label :length, "Length" %>
+<%= f.text_field :length %>
+<br>
+<%= f.label :description, "Description" %>
+<%= f.text_area :description %>
+<br>
+<%= f.label :good_movie %>
+<%= f.label :good_movie, "Yes", value: "yes" %>
+<%= f.radio_button :good_movie, "yes" %>
+<%= f.label :good_movie, "No", value: "no" %>
+<%= f.radio_button :good_movie, "no" %>
+<br>
+<%= f.submit "Submit" %>
+
+<% end %>
+<%= link_to 'Home', root_path %>
