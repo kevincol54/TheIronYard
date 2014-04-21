@@ -1,0 +1,17 @@
+= form_for @patient do |f|
+  =f.label :name
+  =f.text_field :name
+  =f.label :address
+  =f.text_field :address
+  =f.label :phone_number
+  =f.text_field :phone_number
+
+ 
+
+
+  %br
+  =f.submit
+%end
+= link_to "Main Page", root_path
+
+

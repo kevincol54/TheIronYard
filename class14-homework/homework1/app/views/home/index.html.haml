@@ -1,0 +1,55 @@
+%h1 Hospital
+
+= link_to 'New Patients', new_patient_path
+
+%br
+%br
+%ul
+-@patient.each do |patient|
+  %li
+  =patient.name
+  (#{patient.workflow_state})
+  =link_to "Edit", edit_patient_path(patient)
+  |
+  =link_to "Show Patient Info", patient_path(patient)
+  |
+  =link_to "Remove Patient", patient_path(patient), method: :delete
+  %br
+  - if patient.workflow_state == 'waiting'
+    =link_to "See Doctor", doctor_patient_path(patient), method: :patch
+    |
+    =link_to "Send to Xray", xrays_patient_path(patient), method: :patch
+    |
+    =link_to "Send to Surgery", surgery_patient_path(patient), method: :patch
+    |
+    =link_to "Leave Hospital", leaving_patient_path(patient), method: :patch
+  - elsif patient.workflow_state == "doctor"
+    =link_to "Send to Xray", xrays_patient_path(patient), method: :patch
+    |
+    =link_to "Send to Surgery", surgery_patient_path(patient), method: :patch
+    |
+    =link_to "Send to Pay Bill", paybill_patient_path(patient), method: :patch
+  - elsif patient.workflow_state == "xray"
+    =link_to "Send to Surgery", surgery_patient_path(patient), method: :patch
+    |
+    =link_to "See Doctor", doctor_patient_path(patient), method: :patch
+    |
+    =link_to "Send to Pay Bill", paybill_patient_path(patient), method: :patch
+  - elsif patient.workflow_state == "surgery"
+    =link_to "Send to Xray", xrays_patient_path(patient), method: :patch
+    |
+    =link_to "See Doctor", doctor_patient_path(patient), method: :patch
+    |
+    =link_to "Send to Pay Bill", paybill_patient_path(patient), method: :patch
+  - elsif patient.workflow_state == "paybill"
+    =link_to "Leave Hospital", leaving_patient_path(patient), method: :patch 
+  - elsif patient.workflow_state == "leaving"
+    - render 'discharge'
+
+%h2 Past Patients
+-@patient_leaving.each do |patients|
+  %hr
+  =patients.name
+  |
+  =link_to "Show Patient Info", patient_path(patients)
+
