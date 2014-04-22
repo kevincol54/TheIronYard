@@ -15,36 +15,29 @@
   |
   =link_to "Remove Patient", patient_path(patient), method: :delete
   %br
-  - if patient.workflow_state == 'waiting'
-    =link_to "See Doctor", doctor_patient_path(patient), method: :patch
-    |
-    =link_to "Send to Xray", xrays_patient_path(patient), method: :patch
-    |
-    =link_to "Send to Surgery", surgery_patient_path(patient), method: :patch
-    |
-    =link_to "Leave Hospital", leaving_patient_path(patient), method: :patch
-  - elsif patient.workflow_state == "doctor"
-    =link_to "Send to Xray", xrays_patient_path(patient), method: :patch
-    |
-    =link_to "Send to Surgery", surgery_patient_path(patient), method: :patch
-    |
-    =link_to "Send to Pay Bill", paybill_patient_path(patient), method: :patch
-  - elsif patient.workflow_state == "xray"
-    =link_to "Send to Surgery", surgery_patient_path(patient), method: :patch
-    |
-    =link_to "See Doctor", doctor_patient_path(patient), method: :patch
-    |
-    =link_to "Send to Pay Bill", paybill_patient_path(patient), method: :patch
-  - elsif patient.workflow_state == "surgery"
-    =link_to "Send to Xray", xrays_patient_path(patient), method: :patch
-    |
-    =link_to "See Doctor", doctor_patient_path(patient), method: :patch
-    |
-    =link_to "Send to Pay Bill", paybill_patient_path(patient), method: :patch
-  - elsif patient.workflow_state == "paybill"
-    =link_to "Leave Hospital", leaving_patient_path(patient), method: :patch 
-  - elsif patient.workflow_state == "leaving"
-    - render 'discharge'
+  =form_for patient do |f| 
+    - if patient.workflow_state == 'waiting'
+      = f.label :workflow_state 'Send to'
+      = f.select :workflow_state, options_for_select(Patient::WAITING), include_blank: '--- Select ---'
+
+    - elsif patient.workflow_state == "doctor"
+      = f.label :workflow_state
+      = f.select :workflow_state, options_for_select(Patient::DOCTOR), include_blank: '--- Select ---'
+
+    - elsif patient.workflow_state == "xray"
+      = f.label :workflow_state
+      = f.select :workflow_state, options_for_select(Patient::XRAY), include_blank: '--- Select ---'
+
+    - elsif patient.workflow_state == "surgery"
+      = f.label :workflow_state
+      = f.select :workflow_state, options_for_select(Patient::SURGERY), include_blank: '--- Select ---'
+ 
+    - elsif patient.workflow_state == "paybill"
+      = f.label :workflow_state
+      = f.select :workflow_state, options_for_select(Patient::PAYBILL), include_blank: '--- Select ---'
+   
+    - elsif patient.workflow_state == "leaving"
+    = f.submit
 
 %h2 Past Patients
 -@patient_leaving.each do |patients|

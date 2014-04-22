@@ -1,5 +1,6 @@
 class Patient < ActiveRecord::Base
-
+  belongs_to :hospital
+  has_many :medicines
   include Workflow
   workflow do 
     state :waiting do
@@ -32,12 +33,7 @@ class Patient < ActiveRecord::Base
     end
 
     state :leaving 
-      event :leaving, transitions_to: :leaving
   end
 
   WAITING = ["Send to Doctor", "Send to Xray", "Send to Surgery", "Leave"]
-  DOCTOR = ["Send to Xray", "Send to Surgery", "Paybill"]
-  XRAY = ["Send to Surgery", "Send to Doctor", "Paybill"]
-  SURGERY = ["Send to Doctor", "Send to Xray", "Paybill"]
-  PAYBILL = ["Leave"]
 end

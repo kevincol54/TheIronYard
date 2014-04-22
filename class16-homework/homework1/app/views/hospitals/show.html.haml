@@ -1,0 +1,19 @@
+= link_to "List of Hospitals", root_path
+%br
+= @hospitals.name
+%br
+= @hospitals.location
+%br
+= @hospitals.description
+%br
+%h1 Patients
+%br
+= link_to "New Patient", new_hospital_patient_path(@hospitals)
+%br
+  -@patients.each do |patient|
+    %li
+    = link_to patient.name, hospital_patient_path(@hospitals, patient)
+    |
+    = patient.address
+    |
+    =patient.phone_number

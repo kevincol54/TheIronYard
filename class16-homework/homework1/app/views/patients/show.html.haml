@@ -1,0 +1,25 @@
+%h1 Patient Information
+%br
+=link_to "Patients page", hospital_path(@hospital)
+%br
+=@patient.name 
+%br
+
+=@patient.address 
+%br
+
+=@patient.phone_number 
+%br
+
+%h1 Medications
+%br
+= link_to "New Medication", new_hospital_patient_medicine_path(@hospital, @patient)
+/ %br
+/   -@medicines.each do |medicine|
+/   %li
+/   =link_to medicine.name, hospital_patient_medicine_path()
+/ |
+/ = @medicine.name
+/ %br
+/ = @medicine.strength
+
