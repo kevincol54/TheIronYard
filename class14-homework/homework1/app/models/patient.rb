@@ -1,6 +1,6 @@
 class Patient < ActiveRecord::Base
 
-  include Workflow
+  include Workflow 
   workflow do 
     state :waiting do
       event :doctor, transitions_to: :doctor
