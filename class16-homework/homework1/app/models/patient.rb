@@ -11,6 +11,7 @@ class Patient < ActiveRecord::Base
     end
 
     state :doctor do
+      event :doctor, transitions_to: :doctor
       event :xray, transitions_to: :xray
       event :surgery, transitions_to: :surgery
       event :paybill, transitions_to: :paybill

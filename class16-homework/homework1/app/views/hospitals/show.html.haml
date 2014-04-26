@@ -11,9 +11,45 @@
 = link_to "New Patient", new_hospital_patient_path(@hospitals)
 %br
   -@patients.each do |patient|
-    %li
+    / %li
+    %br
     = link_to patient.name, hospital_patient_path(@hospitals, patient)
+    (#{patient.workflow_state})
     |
-    = patient.address
+    = link_to "Edit Patient Info", edit_hospital_patient_path(@hospitals, patient)
     |
-    =patient.phone_number
+    = link_to "Delete", hospital_patient_path(@hospitals, patient), method: :delete
+    |
+    - if patient.workflow_state == 'waiting'
+      =link_to "See Doctor", doctor_hospital_patient_path(@hospitals, patient), method: :patch
+      |
+      =link_to "Send to Xray", xrays_hospital_patient_path(@hospitals, patient), method: :patch
+      |
+      =link_to "Send to Surgery", surgery_hospital_patient_path(@hospitals, patient), method: :patch
+    - elsif patient.workflow_state == "doctor"
+      =link_to "Send to Xray", xrays_hospital_patient_path(@hospitals, patient), method: :patch
+      |
+      =link_to "Send to Surgery", surgery_hospital_patient_path(@hospitals, patient), method: :patch
+      |
+      =link_to "Send to Pay Bill", paybill_hospital_patient_path(@hospitals, patient), method: :patch
+    - elsif patient.workflow_state == "xray"
+      =link_to "Send to Surgery", surgery_hospital_patient_path(@hospitals, patient), method: :patch
+      |
+      =link_to "See Doctor", doctor_hospital_patient_path(@hospitals, patient), method: :patch
+      |
+      =link_to "Send to Pay Bill", paybill_hospital_patient_path(@hospitals, patient), method: :patch
+    - elsif patient.workflow_state == "surgery"
+      =link_to "Send to Xray", xrays_hospital_patient_path(@hospitals, patient), method: :patch
+      |
+      =link_to "See Doctor", doctor_hospital_patient_path(@hospitals, patient), method: :patch
+      |
+      =link_to "Send to Pay Bill", paybill_hospital_patient_path(@hospitals, patient), method: :patch
+    - elsif patient.workflow_state == "paybill"
+      =link_to "Leave Hospital", leaving_hospital_patient_path(@hospitals, patient), method: :patch 
+
+%h2 Past Patients
+-@patient_leaving.each do |patients|
+  %br
+  =patients.name
+/   |
+/   =link_to "Show Patient Info", patient_path(patients)

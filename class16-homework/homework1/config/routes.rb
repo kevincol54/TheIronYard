@@ -12,6 +12,12 @@ Rails.application.routes.draw do
         patch :surgery
         patch :paybill
         patch :leaving
+        get :waiting
+        get :doctor
+        get :xrays
+        get :surgery
+        get :paybill
+        get :leaving
       end
     end
   end

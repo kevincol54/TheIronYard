@@ -1,0 +1,9 @@
+%h1 Medicines for #{@patient.name}
+- @medicines.each do |medicine|
+  %br
+  =medicine.name
+  %br
+  =medicine.strength
+%br
+%hr 
+=link_to "Back to Patient List", hospital_patient_path(@hospital, @patient)

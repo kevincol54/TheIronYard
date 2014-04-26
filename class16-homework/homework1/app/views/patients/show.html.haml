@@ -14,12 +14,13 @@
 %h1 Medications
 %br
 = link_to "New Medication", new_hospital_patient_medicine_path(@hospital, @patient)
-/ %br
-/   -@medicines.each do |medicine|
-/   %li
-/   =link_to medicine.name, hospital_patient_medicine_path()
-/ |
-/ = @medicine.name
-/ %br
-/ = @medicine.strength
+%hr
+-@medicines.each do |medicine|
+  %br
+  =link_to medicine.name, hospital_patient_medicine_path(@hospital, @patient, medicine)
+  |
+  = link_to "Delete", hospital_patient_medicine_path(@hospital, @patient, medicine), method: :delete
+  |
+  = link_to "Edit Medication", edit_hospital_patient_medicine_path(@hospital, @patient, medicine)
+
 

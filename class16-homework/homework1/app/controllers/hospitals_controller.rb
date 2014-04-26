@@ -1,6 +1,6 @@
 class HospitalsController < ApplicationController
   before_filter :find_hospital, only: [:show, :edit, :update, :destroy]
-
+ 
   def new
     @hospitals = Hospital.new
   end
@@ -12,6 +12,8 @@ class HospitalsController < ApplicationController
 
   def show
     @patients = @hospitals.patients
+    @patients = @hospitals.patients.where.not(workflow_state: "leaving")
+    @patient_leaving = @hospitals.patients.where(workflow_state: "leaving")
     # @medicines = @hospitals.medicines
   end
 
@@ -19,6 +21,11 @@ class HospitalsController < ApplicationController
   end
 
   def update
+  end
+
+  def destroy
+    @hospitals.delete
+    redirect_to root_path
   end
 
   private

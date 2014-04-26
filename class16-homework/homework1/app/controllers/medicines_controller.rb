@@ -12,14 +12,22 @@ class MedicinesController < ApplicationController
   end
 
   def show
-    @medicine = Medicine.find params[:id]
+    @medicines = @patient.medicines
   end
 
   def edit
   end
 
   def update
+    @medicine.update_attributes medicine_params
+    redirect_to hospital_patient_path(@hospital, @patient)
+  end 
+
+  def destroy
+    @medicine.delete
+    redirect_to hospital_patient_path(@hospital, @patient)
   end
+
 
   private
     def medicine_params
@@ -31,7 +39,7 @@ class MedicinesController < ApplicationController
     end
 
     def find_medicine
-      @medicine = @hospital.patients.medicine.find params[:id]
+      @medicine = Medicine.find params[:id]
     end 
 
      def find_hospital

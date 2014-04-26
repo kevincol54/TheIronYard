@@ -22,42 +22,44 @@ class PatientsController < ApplicationController
 
   def show
     @patient = Patient.find params[:id]
+    @medicine = Medicine.all
+    @medicines = @patient.medicines
   end
 
   def destroy
     @patient = Patient.find params[:id]
     @patient.delete
-    redirect_to root_path
+    redirect_to hospital_path(hospital)
   end
 
   def doctor
     @patient = Patient.find params[:id]
     @patient.doctor!
-    redirect_to root_path
+    redirect_to hospital_path(@hospital)
   end
 
   def xrays
     @patient = Patient.find params[:id]
     @patient.xray!
-    redirect_to root_path
+    redirect_to hospital_path(@hospital)
   end
 
   def surgery
     @patient = Patient.find params[:id]
     @patient.surgery!
-    redirect_to root_path
+    redirect_to hospital_path(@hospital)
   end
 
   def paybill
     @patient = Patient.find params[:id]
     @patient.paybill!
-    redirect_to root_path
+    redirect_to hospital_path(@hospital)
   end
 
   def leaving
     @patient = Patient.find params[:id]
     @patient.leaving!
-    redirect_to root_path
+    redirect_to hospital_path(@hospital)
   end
 
   private
