@@ -4,13 +4,10 @@
 %br
 =@patient.name 
 %br
-
 =@patient.address 
 %br
-
 =@patient.phone_number 
 %br
-
 %h1 Medications
 %br
 = link_to "New Medication", new_hospital_patient_medicine_path(@hospital, @patient)
@@ -22,5 +19,4 @@
   = link_to "Delete", hospital_patient_medicine_path(@hospital, @patient, medicine), method: :delete
   |
   = link_to "Edit Medication", edit_hospital_patient_medicine_path(@hospital, @patient, medicine)
-
 

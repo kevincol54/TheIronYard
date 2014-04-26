@@ -14,7 +14,6 @@ class HospitalsController < ApplicationController
     @patients = @hospitals.patients
     @patients = @hospitals.patients.where.not(workflow_state: "leaving")
     @patient_leaving = @hospitals.patients.where(workflow_state: "leaving")
-    # @medicines = @hospitals.medicines
   end
 
   def edit
