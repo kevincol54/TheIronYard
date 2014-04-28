@@ -1,0 +1,13 @@
+%h1 #{@hospital.name}
+
+=link_to "New Patient", new_hospital_patient_path(@hospital)
+=link_to "New Doctor", doctor_hospital_path(@hospital)
+%br
+%h1 Patients
+-@patients.each do |patient|
+  %br
+  =link_to patient.name, hospital_patient_path(@hospital, patient)
+%h1 Doctors
+-@doctors.each do |doctors|
+  %br
+  =doctors.name

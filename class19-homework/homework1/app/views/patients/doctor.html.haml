@@ -1,0 +1,5 @@
+%h1 add doctor to patient
+=form_for [@hospital, @patient, @doctor], url: add_doctor_hospital_patient_path(@hospital, @patient) do |f|
+  =f.label :name
+  =f.text_area :name
+  = f.submit

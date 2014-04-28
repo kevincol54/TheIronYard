@@ -17,7 +17,7 @@
   %br
   =form_for patient do |f| 
     - if patient.workflow_state == 'waiting'
-      = f.label :workflow_state 'Send to'
+      = f.label :workflow_state
       = f.select :workflow_state, options_for_select(Patient::WAITING), include_blank: '--- Select ---'
 
     - elsif patient.workflow_state == "doctor"
