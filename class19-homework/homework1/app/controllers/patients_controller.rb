@@ -35,7 +35,7 @@ class PatientsController < ApplicationController
 
   def add_doctor
     @doctor = @patient.doctors.create doctor_params
-    redirect_to root_path
+    redirect_to hospital_patient_path(@hospital, @patient)
   end
   
   private
