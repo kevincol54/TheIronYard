@@ -4,7 +4,7 @@ before_filter :find_patient, only: [:edit, :update, :show, :destroy, :doctor, :x
 
   def new
     @patient = Patient.new   
-  end
+  end 
 
   def create
     @patient = Patient.create patient_params
