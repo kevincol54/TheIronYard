@@ -17,6 +17,8 @@ class HospitalsController < ApplicationController
   def show
     @patients = @hospital.patients
     @doctors = @hospital.doctors
+    @patient = @hospital.patients.where.not(workflow_state: "leaving")
+    @patient_leaving = @hospital.patients.where(workflow_state: "leaving")
   end
 
   def edit

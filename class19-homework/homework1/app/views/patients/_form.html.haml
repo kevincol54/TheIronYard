@@ -12,6 +12,9 @@
   =f.label :description
   =f.text_area :description
   %br
+  =f.label :email
+  =f.text_field :email, placeholder: "Email"
+  %br
   -@hospitals.each do |hospital|
     =check_box_tag 'patient[hospital_ids][]', hospital.id, false, {id: "hospital_id_#{hospital.id}"}
     =label_tag "hospital_id_#{hospital.id}", hospital.name

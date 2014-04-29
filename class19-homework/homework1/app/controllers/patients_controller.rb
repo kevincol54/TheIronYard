@@ -18,6 +18,7 @@ class PatientsController < ApplicationController
 
   def show
     @doctor = @patient.doctors
+    # @patient = @hospital.patients
   end
 
   def edit
@@ -29,13 +30,51 @@ class PatientsController < ApplicationController
   def destroy
   end
 
-  def doctor
+  def new_doctor
     @doctor = @patient.doctors.new
   end
 
   def add_doctor
     @doctor = @patient.doctors.create doctor_params
     redirect_to hospital_patient_path(@hospital, @patient)
+  end
+
+  def doctor
+    @patient = Patient.find params[:id]
+    @patient.doctor!
+    redirect_to hospital_path(@hospital)
+  end
+
+  def xrays
+    @patient = Patient.find params[:id]
+    @patient.xray!
+    redirect_to hospital_path(@hospital)
+
+  end
+
+  def surgery
+    @patient = Patient.find params[:id]
+    @patient.surgery!
+    redirect_to hospital_path(@hospital)
+
+  end
+
+  def paybill
+    @patient = Patient.find params[:id]
+    @patient.paybill!
+    redirect_to hospital_path(@hospital)
+
+  end
+
+  def leaving
+    @patient = Patient.find params[:id]
+    @patient.leaving!
+    redirect_to hospital_path(@hospital)
+
+  end
+
+  def search_names
+    @search_names = Patient.search_names params[:q]
   end
   
   private

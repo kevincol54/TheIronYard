@@ -5,9 +5,41 @@
 %hr
 %br
 %h1 Patients
--@patients.each do |patient|
+%br
+=render 'patients/search'
+-@patient.each do |patient|
   %br
   =link_to patient.name, hospital_patient_path(@hospital, patient)
+  (#{patient.workflow_state})
+  %br
+  - if patient.workflow_state == 'waiting'
+    =link_to "See Doctor", doctor_hospital_patient_path(@hospital, patient), method: :patch
+    |
+    =link_to "Send to Xray", xrays_hospital_patient_path(@hospital, patient), method: :patch
+    |
+    =link_to "Send to Surgery", surgery_hospital_patient_path(@hospital, patient), method: :patch
+  - elsif patient.workflow_state == "doctor"
+    =link_to "Send to Xray", xrays_hospital_patient_path(@hospital, patient), method: :patch
+    |
+    =link_to "Send to Surgery", surgery_hospital_patient_path(@hospital, patient), method: :patch
+    |
+    =link_to "Send to Pay Bill", paybill_hospital_patient_path(@hospital, patient), method: :patch
+  - elsif patient.workflow_state == "xray"
+    =link_to "Send to Surgery", surgery_hospital_patient_path(@hospital, patient), method: :patch
+    |
+    =link_to "See Doctor", doctor_hospital_patient_path(@hospital, patient), method: :patch
+    |
+    =link_to "Send to Pay Bill", paybill_hospital_patient_path(@hospital, patient), method: :patch
+  - elsif patient.workflow_state == "surgery"
+    =link_to "Send to Xray", xrays_hospital_patient_path(@hospital, patient), method: :patch
+    |
+    =link_to "See Doctor", doctor_hospital_patient_path(@hospital, patient), method: :patch
+    |
+    =link_to "Send to Pay Bill", paybill_hospital_patient_path(@hospital, patient), method: :patch
+  - elsif patient.workflow_state == "paybill"
+    =link_to "Leave Hospital", leaving_hospital_patient_path(@hospital, patient), method: :patch 
+
+
 %hr
 %h1 Doctors
 -@doctors.each do |doctors|
@@ -15,4 +47,9 @@
   =doctors.name
 %hr
 %br
-=link_to "Back", root_path
+=link_to "Back To Hospital Page", root_path
+
+%h1 Past Patients
+-@patient_leaving.each do |patients|
+  %br
+  =link_to patients.name, hospital_patient_path(@hospital, @patient)
