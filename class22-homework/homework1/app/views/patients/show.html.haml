@@ -8,6 +8,9 @@
 =@patient.address
 %br
 %h3 Medications
+-@medicine.each do |medicine|
+  %br
+  =medicine.name
 %hr
 %h1 Doctor
 %br

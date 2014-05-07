@@ -9,6 +9,17 @@ class PatientsController < ApplicationController
     :new_doctor,
     :discharge]
 
+  def index
+    @patient = if params[:q]
+      Patient.search_names params [:q]
+    else
+      Patient.all
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def new
     @patient = Patient.new 
     @hospitals = Hospital.all
@@ -29,7 +40,7 @@ class PatientsController < ApplicationController
 
   def show
     @doctor = @patient.doctors
-    # @patient = @hospital.patients
+    @medicine = @patient.medicines
   end
 
   def edit
@@ -94,12 +105,10 @@ class PatientsController < ApplicationController
   end
 
 
-  def search_names
-    @search_names = Patient.search_names params[:q]
-    respond_to do |format|
-      format.js
-    end
-  end
+  # def search_names
+  #   @search_names = Patient.search_names params[:q]
+  #   end
+  # end
 
   def discharge
   end

@@ -67,13 +67,13 @@ var getting_shit_done = function() {
     })
   });
 
-  $(document.body).on("click", ".search", function(){
-    $.ajax({
-      type: "GET",
-      url: $(this).attr("search_url"),
-      dataType: "script"
-    })
-  });
+  // $(document.body).on("click", ".search", function(){
+  //   $.ajax({
+  //     type: "GET",
+  //     url: $(this).attr("search_url"),
+  //     dataType: "script"
+  //   })
+  // });
 
   pageLength = 5;
 
@@ -90,12 +90,6 @@ var getting_shit_done = function() {
   $(".pagelink a").click(function(){
     displayPage(parseInt($(this).text()))
   });
-
-
- 
-  // $(".searchfunction").click(function(){
-  //   displayPage(parseInt($(this).text))
-  // });
 
 
 }

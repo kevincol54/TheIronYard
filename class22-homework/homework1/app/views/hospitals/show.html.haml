@@ -10,7 +10,7 @@
 .searchfunction
   =render 'patients/search'
 
-%ul
+%ul.patient
   -@patient.each_slice(10) do |patient, patient1, patient2, patient3, patient4, patient5, patient6, patient7, patient8, patient9|
 
     = render 'patients/patient', patient: patient if patient
@@ -43,6 +43,6 @@
 =link_to "Back To Hospital Page", root_path
 
 %h1 Past Patients
--@patient_leaving.each do |patients|
+-@patient_leaving.each do |patient|
   %br
-  =link_to patients.name, hospital_patient_path(@hospital, @patient)
+  =link_to patient.name, hospital_patient_path(@hospital, patient)
