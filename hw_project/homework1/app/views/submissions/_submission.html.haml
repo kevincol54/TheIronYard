@@ -1,0 +1,18 @@
+.boxaroundsubmissions
+  .submissions{ class: "#{submission.workflow_state} submission submission_#{submission.id}"}
+    .submissionusername
+      = submission.user_name
+    
+    = link_to "#{submission.name}", location_course_assignment_submission_path(@location, @course, @assignment, submission)
+    |
+    ="#{submission.workflow_state}"
+    |
+    -if current_user.admin?
+      - if submission.workflow_state == 'new'
+        =link_to "Review", "javascript:void(0);", class: "reviewing change_workflow", submission_url: reviewing_location_course_assignment_submission_path(@location, @course, @assignment, submission)
+      - elsif submission.workflow_state == 'reviewing'
+        =link_to "Complete", "javascript:void(0);", class: "complete change_workflow", submission_url: complete_location_course_assignment_submission_path(@location, @course, @assignment, submission)
+        |
+        =link_to "Incomplete", "javascript:void(0);", class: "incomplete change_workflow", submission_url: incomplete_location_course_assignment_submission_path(@location, @course, @assignment, submission)
+      - elsif submission.workflow_state == 'incomplete'
+        =link_to "Review", "javascript:void(0);", class: "reviewing change_workflow", submission_url: reviewing_location_course_assignment_submission_path(@location, @course, @assignment, submission)

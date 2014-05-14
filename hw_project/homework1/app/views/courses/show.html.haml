@@ -1,0 +1,57 @@
+%link{:href => "//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css", :rel => "stylesheet"}/
+
+.page-container
+  / top navbar
+  .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+    .container
+      .navbar-header
+        %button.navbar-toggle{"data-target" => ".sidebar-nav", "data-toggle" => "offcanvas", :type => "button"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{:href => "/"} Student Homework Tracker
+        .headerrightcontainer
+          .navbar-brand
+            - if user_signed_in? 
+              = link_to('Logout', destroy_user_session_path, :method => :delete)
+            - else
+              = link_to('Login', new_user_session_path)
+  .container
+    .row.row-offcanvas.row-offcanvas-left
+      / sidebar
+      #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas{:role => "navigation"}
+        %div{"data-offset-bottom" => "90", "data-offset-top" => "45", "data-spy" => "affix"}
+          %ul#sidebar-nav.nav
+            
+            %li
+              %a{:href => "/"} Home
+            %li
+              %a{:href => "/locations"} Back To Locations
+            %li
+              =link_to "Back To Courses", location_path(@location)
+            -if current_user.admin?
+              %li
+                =link_to "Add Assignment", new_location_course_assignment_path(@location, @course)
+              %li
+                =link_to "Edit Course", edit_location_course_path(@location, @course) 
+      / main area
+      .col-xs-12.col-sm-9{"data-spy" => "scroll", "data-target" => "#sidebar-nav"}
+        %h1 #{@location.name} #{@course.name} Assignments
+        -@assignment.each do |assignment|
+          %br
+          =link_to "#{assignment.name}", location_course_assignment_path(@location, @course, assignment)
+
+        %h1 Students in #{@location.name} #{@course.name}
+
+        -@course.users.each do |user|
+          %br
+          = user.name
+      / /.col-xs-12 main
+    / /.row
+  / /.container
+/ /.page-container
+#footer
+  / footer
+  .container
+    .row
+      %ul.list-unstyled

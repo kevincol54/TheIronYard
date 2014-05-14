@@ -1,0 +1,71 @@
+%link{:href => "//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css", :rel => "stylesheet"}/
+
+
+.page-container
+  / top navbar
+  .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+    .container
+      .navbar-header
+        %button.navbar-toggle{"data-target" => ".sidebar-nav", "data-toggle" => "offcanvas", :type => "button"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{:href => "#"} Student Homework Tracker
+        .headerrightcontainer
+          .navbar-brand
+            - if user_signed_in? 
+              = link_to('Logout', destroy_user_session_path, :method => :delete)
+            - else
+              = link_to('Login', new_user_session_path)
+  .container
+    .row.row-offcanvas.row-offcanvas-left
+      / sidebar
+      #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas{:role => "navigation"}
+        %div{"data-offset-bottom" => "90", "data-offset-top" => "45", "data-spy" => "affix"}
+          %ul#sidebar-nav.nav
+            
+            %li
+              %a{:href => "/"} Home
+            %li
+              %a{:href => "/locations"} Locations
+            %li
+              %a{:href => "#section2"} Section 2
+            %li
+              %a{:href => "#section3"} Section 3  
+      / main area
+      .col-xs-12.col-sm-9{"data-spy" => "scroll", "data-target" => "#sidebar-nav"}
+        %h1#section1 Locations
+        / %a{:href => "locations/new"} New Location
+        %br
+        - @location.each do |location|
+          %br
+          =location.name
+        %h1#section2 Section 2
+        %p
+          Fusce sollicitudin lacus lacinia mi tincidunt ullamcorper. Aenean velit ipsum, vestibulum nec
+          tincidunt eu, lobortis vitae erat. Nullam ultricies fringilla ultricies. Sed euismod nibh quis
+          tincidunt dapibus. Nulla quam velit, porta sit amet felis eu, auctor fringilla elit. Donec
+          convallis tincidunt nibh, quis pellentesque sapien condimentum a. Phasellus purus dui, rhoncus
+          id suscipit id, ornare et sem. Duis aliquet posuere arcu a ornare. Pellentesque consequat libero
+          id massa accumsan volutpat. Fusce a hendrerit lacus. Nam elementum ac eros eu porttitor.
+          Phasellus enim mi, auctor sit amet luctus a, commodo fermentum arcu. In volutpat scelerisque
+          quam, nec lacinia libero.
+        %h1#section3 Section 3
+        %p
+          Aliquam a lacinia orci, iaculis porttitor neque. Nullam cursus dolor tempus mauris posuere, eu
+          scelerisque sem tincidunt. Praesent blandit sapien at sem pulvinar, vel egestas orci varius.
+          Praesent vitae purus at ante aliquet luctus vel quis nibh. Mauris id nulla vitae est lacinia
+          rhoncus a vel justo. Donec iaculis quis sapien vel molestie. Aliquam sed elementum orci.
+          Vestibulum tristique tempor risus et malesuada. Sed eget ligula sed quam placerat dapibus.
+          Integer accumsan ac massa at tempus.
+      / /.col-xs-12 main
+    / /.row
+  / /.container
+/ /.page-container
+#footer
+  / footer
+  .container
+    .row
+    / /row
+  / /container
+/ /footer

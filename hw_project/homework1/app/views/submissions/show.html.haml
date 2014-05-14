@@ -1,0 +1,52 @@
+%link{:href => "//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css", :rel => "stylesheet"}/
+
+.page-container
+  / top navbar
+  .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+    .container
+      .navbar-header
+        %button.navbar-toggle{"data-target" => ".sidebar-nav", "data-toggle" => "offcanvas", :type => "button"}
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %a.navbar-brand{:href => "/"} Student Homework Tracker
+        .headerrightcontainer
+          .navbar-brand
+            - if user_signed_in? 
+              = link_to('Logout', destroy_user_session_path, :method => :delete)
+            - else
+              = link_to('Login', new_user_session_path)
+  .container
+    .row.row-offcanvas.row-offcanvas-left
+      / sidebar
+      #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas{:role => "navigation"}
+        %div{"data-offset-bottom" => "90", "data-offset-top" => "45", "data-spy" => "affix"}
+          %ul#sidebar-nav.nav
+            
+            %li
+              %a{:href => "/"} Home
+            %li
+              =link_to "Back To Submissions", location_course_assignment_path(@location, @course, @assignment)
+              
+      / main area
+      .col-xs-12.col-sm-9{"data-spy" => "scroll", "data-target" => "#sidebar-nav"}
+        %h1 #{@assignment.name}
+        %h4 #{@submission.name}
+        - @links.each do |links|
+          =link_to "#{links.links}", "#{links.links}"
+        %br
+        =render 'submissions/new_comment'
+        %br
+        %ul.commentlist
+          - @comment.each do |comment|
+            =render 'submissions/new_comment_show', comment: comment
+      / /.col-xs-12 main
+    / /.row
+  / /.container
+/ /.page-container
+#footer
+  / footer
+  .container
+    .row
+      %ul.list-unstyled
+      

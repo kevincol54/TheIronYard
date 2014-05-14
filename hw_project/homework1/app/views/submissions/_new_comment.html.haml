@@ -1,0 +1,4 @@
+%h4 Add Comment
+= form_tag add_comment_location_course_assignment_submission_path(@location, @course, @assignment, @submission), method: :post, remote: true
+= text_area_tag "comment[content]" , "", placeholder: "Enter Comment"
+= submit_tag "Submit"
