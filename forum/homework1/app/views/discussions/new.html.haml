@@ -1,0 +1,35 @@
+%link{:href => "//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css", :rel => "stylesheet"}/
+
+%header.navbar.navbar-bright.navbar-fixed-top{:role => "banner"}
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      
+    %nav.collapse.navbar-collapse{:role => "navigation"}
+      %ul.nav.navbar-nav
+        %li
+          %a{:href => "/"} Home
+        %li
+          %a{:href => "#"} Music Talk
+        %li
+          %a{:href => "#"} Tech Talk
+        %li
+          %a{:href => "#"} MuCH Talk
+        %li
+          =link_to "New Discussion", new_discussion_path
+      %ul.nav.navbar-right.navbar-nav
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.glyphicon.glyphicon-search
+          %ul.dropdown-menu{:style => "padding:12px;"}
+            %form.form-inline
+              %button.btn.btn-default.pull-right{:type => "submit"}
+                %i.glyphicon.glyphicon-search
+              %input.form-control.pull-left{:placeholder => "Search", :type => "text"}
+
+= render 'form'
+= link_to "Cancel", root_path

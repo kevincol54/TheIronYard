@@ -1,0 +1,82 @@
+%link{:href => "//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css", :rel => "stylesheet"}/
+
+%header.navbar.navbar-bright.navbar-fixed-top{:role => "banner"}
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      
+    %nav.collapse.navbar-collapse{:role => "navigation"}
+      %ul.nav.navbar-nav
+        %li
+          %a{:href => "/"} Home
+        %li
+          =link_to "Music Talk", music_talk_discussions_path
+        %li
+          =link_to "Tech Talk", tech_talk_discussions_path
+        %li
+          =link_to "Much Talk", much_talk_discussions_path
+        %li
+          =link_to "New Discussion", new_discussion_path
+        %li
+          - if user_signed_in? 
+            = link_to('Logout', destroy_user_session_path, :method => :delete)
+          - else
+            = link_to('Login', new_user_session_path)
+      %ul.nav.navbar-right.navbar-nav
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.glyphicon.glyphicon-search
+          %ul.dropdown-menu{:style => "padding:12px;"}
+            %form.form-inline
+              %button.btn.btn-default.pull-right{:type => "submit"}
+                %i.glyphicon.glyphicon-search
+              %input.form-control.pull-left{:placeholder => "Search", :type => "text"}
+#masthead
+  .container
+    .row
+      .col-md-7
+        %h1
+          MUCH Talk
+          %h3 Music Talk
+          %p.lead
+      .col-md-5
+        .well.well-lg
+          %h1 where MUsic and teCH Talk collide
+          .row
+            .col-sm-12
+  / /cont
+  .container
+    .row
+      .col-md-12
+        .top-spacer   
+.container
+  .row
+    .col-md-12
+      .panel
+        .panel-body
+          / /stories
+          .row
+            %br
+
+            -@discussion.each do |dis|
+              .col-md-2.col-sm-3.text-center
+                %a.story-title{:href => "http://www.techvisually.com/p/2LmGb0yEsL"}
+                  %img.img-circle{:alt => "Repurpose Content to Reach a Wider Audience", :src => "http://www.bestcoloringpagesforkids.com/wp-content/uploads/2013/12/Music-Notes-Coloring-Page.jpg", :style => "width:100px;height:100px"}/      
+              .col-md-10.col-sm-9
+                %h3
+                  = dis.title
+                .row
+                  .col-xs-9
+                    %h4
+                      / %span.label.label-default 97thfloor.com
+                    %h4
+                      %small.text-muted{:style => "font-family:courier,'new courier';"}
+                        .timestamp
+                          = time_ago_in_words(dis.created_at)
+                        •  
+                        =link_to "Read More", discussion_path(dis)
+                        %hr
