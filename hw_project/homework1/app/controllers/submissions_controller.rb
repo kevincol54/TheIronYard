@@ -38,7 +38,8 @@ class SubmissionsController < ApplicationController
   end
 
   def update
-
+    @submission.update_attributes submission_params
+    redirect_to location_course_assignment_submission_path(@location, @course, @assignment, @submission)
   end
 
   def destroy

@@ -27,6 +27,8 @@
               %a{:href => "/"} Home
             %li
               =link_to "Back To Submissions", location_course_assignment_path(@location, @course, @assignment)
+            %li
+              =link_to "Edit Submission", edit_location_course_assignment_submission_path(@location, @course, @assignment, @submission)
               
       / main area
       .col-xs-12.col-sm-9{"data-spy" => "scroll", "data-target" => "#sidebar-nav"}
