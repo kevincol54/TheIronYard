@@ -66,9 +66,9 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  def new_comment
-    @comment = @submission.comments.new
-  end
+  # def new_comment
+  #   @comment = @submission.comments.new
+  # end
 
   def add_comment
     @comment = @submission.comments.create comment_params.merge(user_id: current_user.id, name: current_user.name)
