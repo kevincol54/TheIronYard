@@ -18,6 +18,10 @@
 /* override bootstrap styles */
 @import url('http://fonts.googleapis.com/css?family=Oswald:300,400:latin,latin-ext');
 
+div.thishit{
+  border: 1px solid black;
+}
+
 .top-spacer h1{
   color: black;
 }
@@ -185,6 +189,8 @@ a,a:hover {
   max-width:380px;
   max-height:280px;
 }
+
+
 
 .txt-container {
   overflow:hidden;

@@ -1,0 +1,6 @@
+%h4 Add Comment
+= form_tag discussion_comments_path(@discussion), method: :post, remote: true
+= text_area_tag "comment[content]", "", placeholder: "Enter Comment Bitches!"
+%br
+= submit_tag "Post that Comment"
+

@@ -65,7 +65,7 @@
             -@discussion.each do |dis|
               .col-md-2.col-sm-3.text-center
                 %a.story-title{:href => "http://www.techvisually.com/p/2LmGb0yEsL"}
-                  %img.img-circle{:alt => "Repurpose Content to Reach a Wider Audience", :src => "http://img1.wikia.nocookie.net/__cb20070127070117/uncyclopedia/images/5/5a/20040119-old-school-computer.jpg", :style => "width:100px;height:100px"}/      
+                  %img.img-circle{:alt => "Repurpose Content to Reach a Wider Audience", :src => "http://img1.wikia.nocookie.net/__cb20070127070117/uncyclopedia/images/5/5a/20040119-old-school-computer.jpg", :style => "width:100px;height:100px"}      
               .col-md-10.col-sm-9
                 %h3
                   = dis.title
@@ -75,7 +75,7 @@
                     %h4
                       %small.text-muted{:style => "font-family:courier,'new courier';"}
                         .timestamp
-                          = dis.created_at.strftime("%b %e, %l:%M %p")
+                          = time_ago_in_words(dis.created_at)
                           •  
                           =link_to "Read More", discussion_path(dis)
-                          %hr
+= render 'discussions/tweets'

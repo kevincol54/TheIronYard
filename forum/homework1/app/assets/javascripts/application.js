@@ -17,13 +17,26 @@
 //= require_tree .
 var when_page_is_ready = function(){
 
-
   $("p.alert").fadeOut(2000)
   $("p.notice").fadeOut(2000)
-  
-  // $("div.timestamp").prettyDate();
-  // setInterval(function(){ $("div.timestamp").prettyDate();}, 5000);
+
+
+
+ 
 }
+
+
+
+      if (annyang) {
+          var commands = {
+              'Kevin': function() {
+                  alert('I implemented this after drinking two bottles of champagne!');
+              }
+          };
+          annyang.addCommands(commands);
+          annyang.start(); 
+      }
+    
 
 $(document).ready(when_page_is_ready);
 $(document).on("page:load", when_page_is_ready);

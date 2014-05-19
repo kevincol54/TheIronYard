@@ -71,11 +71,9 @@
                 .row
                   .col-xs-9
                     %h4
-                      %span.label.label-default 97thfloor.com
-                    %h4
                       %small.text-muted{:style => "font-family:courier,'new courier';"}
                         .timestamp
-                          = dis.created_at.strftime("%b %e, %l:%M %p")
+                          = time_ago_in_words(dis.created_at)
                           •
                           %a.text-muted{:href => "#"} Read More
                           %hr

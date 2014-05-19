@@ -54,4 +54,11 @@
     .col-md-12
       .top-spacer   
         %h1 #{@discussion.title}
+        %hr
         %h3 #{@discussion.content}
+        %hr
+        = render 'comments/form'
+        %ul
+          .commentslist
+            - @comment.each do |comment|
+              = render 'comments/show', comment: comment

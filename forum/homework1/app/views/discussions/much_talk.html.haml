@@ -59,23 +59,22 @@
         .panel-body
           / /stories
           .row
-            %br
+            .thisshit
+            
 
-            -@discussion.each do |dis|
-              .col-md-2.col-sm-3.text-center
-                %a.story-title{:href => "http://www.techvisually.com/p/2LmGb0yEsL"}
-                  %img.img-circle{:alt => "Repurpose Content to Reach a Wider Audience", :src => "http://www.bestcoloringpagesforkids.com/wp-content/uploads/2013/12/Music-Notes-Coloring-Page.jpg", :style => "width:100px;height:100px"}/      
-              .col-md-10.col-sm-9
-                %h3
-                  = dis.title
-                .row
-                  .col-xs-9
-                    %h4
-                      %span.label.label-default 97thfloor.com
-                    %h4
-                      %small.text-muted{:style => "font-family:courier,'new courier';"}
-                        .timestamp
-                          = dis.created_at.strftime("%b %e, %l:%M %p")
-                          •  
-                          =link_to "Read More", discussion_path(dis)
-                          %hr
+              -@discussion.each do |dis|
+                .col-md-2.col-sm-3.text-center
+                  %a.story-title{:href => "http://www.techvisually.com/p/2LmGb0yEsL"}
+                    %img.img-circle{:alt => "Repurpose Content to Reach a Wider Audience", :src => "http://www.thecontrarianmedia.com/wp-content/uploads/2009/04/music_technology_w-300x264.jpg", :style => "width:100px;height:100px"}/      
+                .col-md-10.col-sm-9
+                  %h3
+                    = dis.title
+                  .row
+                    .col-xs-9
+                      %h4
+                        %small.text-muted{:style => "font-family:courier,'new courier';"}
+                          .timestamp
+                            = time_ago_in_words(dis.created_at)
+                            •  
+                            =link_to "Read More", discussion_path(dis)
+                            %hr
