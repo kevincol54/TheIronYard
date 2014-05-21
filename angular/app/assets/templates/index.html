@@ -1,0 +1,8 @@
+<div class="jumbotron">
+  <h1>{{title}}</h1>
+</div>
+<a ng-click="createNewDvd()">New Dvd</a>
+<div class="row" ng-repeat="dvd in data.dvds">
+  <h2><a ng-click="viewDvd(dvd.id)">{{ dvd.title }}</a></h2>
+  <p>{{ dvd.description }}</p>
+</div>

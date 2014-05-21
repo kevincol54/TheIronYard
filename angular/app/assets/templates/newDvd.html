@@ -1,0 +1,12 @@
+<form>
+  <label><strong>Title</strong>
+    <input ng-model="formData.newDvdTitle">
+  </label>
+  <br>
+  <label><strong>Description</strong>
+    <textarea ng-model="formData.newDvdContent"></textarea>
+  </label>
+  <br>
+  <button class="btn btn-primary" ng-click="createDvd()">Create</button>
+  <button class="btn btn-warning" ng-click="returnHome()">Home</button>
+</form>
