@@ -54,11 +54,21 @@
     .col-md-12
       .top-spacer   
         %h1 #{@discussion.title}
-        %hr
+       
         %h3 #{@discussion.content}
         %hr
         = render 'comments/form'
+        %br
+        %br
         %ul
+          .commentsheader
+            %h2 Comments
           .commentslist
             - @comment.each do |comment|
               = render 'comments/show', comment: comment
+          %hr
+          %hr
+          %hr
+          %hr
+          %hr
+          %hr
